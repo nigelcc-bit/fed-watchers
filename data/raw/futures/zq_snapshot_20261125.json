@@ -1,0 +1,126 @@
+{
+ "source": "Interactive Brokers MCP get_price_snapshot, CBOT 30-Day Fed Funds (ZQ), delayed quotes",
+ "pulled": "2026-11-25",
+ "rows": [
+  {
+   "conid": "529748903",
+   "exchange": "CBOT",
+   "contract_month": "202611",
+   "last": 96.1225,
+   "bid": 96.12,
+   "ask": 96.1225,
+   "ts_utc": "2026-11-25T00:27:49Z",
+   "status": "DELAYED"
+  },
+  {
+   "conid": "535970161",
+   "exchange": "CBOT",
+   "contract_month": "202612",
+   "last": 95.945,
+   "bid": 95.94,
+   "ask": 95.945,
+   "ts_utc": "2026-11-25T06:17:42Z",
+   "status": "DELAYED"
+  },
+  {
+   "conid": "542225066",
+   "exchange": "CBOT",
+   "contract_month": "202701",
+   "last": 95.855,
+   "bid": 95.85,
+   "ask": 95.855,
+   "ts_utc": "2026-11-25T06:14:18Z",
+   "status": "DELAYED"
+  },
+  {
+   "conid": "547336122",
+   "exchange": "CBOT",
+   "contract_month": "202702",
+   "last": 95.71,
+   "bid": 95.71,
+   "ask": 95.715,
+   "ts_utc": "2026-11-25T06:14:18Z",
+   "status": "DELAYED"
+  },
+  {
+   "conid": "553809378",
+   "exchange": "CBOT",
+   "contract_month": "202703",
+   "last": 95.645,
+   "bid": 95.64,
+   "ask": 95.645,
+   "ts_utc": "2026-11-25T06:14:18Z",
+   "status": "DELAYED"
+  },
+  {
+   "conid": "559306114",
+   "exchange": "CBOT",
+   "contract_month": "202704",
+   "last": 95.565,
+   "bid": 95.56,
+   "ask": 95.565,
+   "ts_utc": "2026-11-25T06:14:18Z",
+   "status": "DELAYED"
+  },
+  {
+   "conid": "564976869",
+   "exchange": "CBOT",
+   "contract_month": "202705",
+   "last": 95.515,
+   "bid": 95.51,
+   "ask": 95.515,
+   "ts_utc": "2026-11-25T06:14:18Z",
+   "status": "DELAYED"
+  },
+  {
+   "conid": "570640401",
+   "exchange": "CBOT",
+   "contract_month": "202706",
+   "last": 95.47,
+   "bid": 95.465,
+   "ask": 95.47,
+   "ts_utc": "2026-11-25T06:14:18Z",
+   "status": "DELAYED"
+  },
+  {
+   "conid": "576721296",
+   "exchange": "CBOT",
+   "contract_month": "202707",
+   "last": 95.45,
+   "bid": 95.445,
+   "ask": 95.455,
+   "ts_utc": "2026-11-25T06:20:05Z",
+   "status": "DELAYED"
+  },
+  {
+   "conid": "582769437",
+   "exchange": "CBOT",
+   "contract_month": "202708",
+   "last": 95.455,
+   "bid": 95.45,
+   "ask": 95.455,
+   "ts_utc": "2026-11-25T06:14:18Z",
+   "status": "DELAYED"
+  },
+  {
+   "conid": "594762279",
+   "exchange": "CBOT",
+   "contract_month": "202710",
+   "last": 95.46,
+   "bid": 95.455,
+   "ask": 95.465,
+   "ts_utc": "2026-11-25T06:01:05Z",
+   "status": "DELAYED"
+  },
+  {
+   "conid": "605997126",
+   "exchange": "CBOT",
+   "contract_month": "202712",
+   "last": 95.525,
+   "bid": 95.53,
+   "ask": 95.54,
+   "ts_utc": "2026-11-25T04:19:13Z",
+   "status": "DELAYED"
+  }
+ ]
+}
