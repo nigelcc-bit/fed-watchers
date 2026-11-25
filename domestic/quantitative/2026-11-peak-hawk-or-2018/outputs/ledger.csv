@@ -34,3 +34,5 @@ D_h4_aggregate_loose,H4,aggregate_loose,1,True,2026-11-25T06:52:27Z
 D_h4_conditions_tightening,H4,conditions_tightening,1,False,2026-11-25T06:52:27Z
 D_h4_pocket,H4,pocket,1,True,2026-11-25T06:52:27Z
 D_h4_composition_artefact,H4,composition_artefact,1,True,2026-11-25T06:52:27Z
+A4_beta_2y10y_2026,preview,"beta 0.74 (se 0.04), daily 2026-01-05 to 2026-11-23",223,R2 0.68,2026-11-25T06:53:15Z
+A4_data_surprise_map,preview,not run: no consensus forecasts and no reachable release calendar (BLS/ALFRED blocked),0,INCONCLUSIVE,2026-11-25T06:53:15Z
