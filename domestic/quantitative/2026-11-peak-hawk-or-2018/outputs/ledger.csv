@@ -1,0 +1,38 @@
+test_id,hypothesis,statistic,n,p_or_posterior,timestamp
+A1_h1b_cum_jan_ge50,H1b,cum priced through Jan27 = 40.9bp vs 50bp floated,1,not met,2026-11-25T06:46:27Z
+A1_h1b_cum_jan_ge45,H1b-sens,cum priced through Jan27 = 40.9bp vs 45bp,1,not met,2026-11-25T06:46:27Z
+A1_gap_vs_dots_2026,fed-priced,end-2026 implied minus SEP median = +0.1bp,1,n/a,2026-11-25T06:46:27Z
+A1_gap_vs_dots_2027,fed-priced,end-2027 implied minus SEP median = +33.5bp,1,n/a,2026-11-25T06:46:27Z
+A2_h1a_waller_shift,H1a,raw shift +3.0 (now 6 vs prior 3.0); weighted +1.50,3,shift,2026-11-25T06:47:08Z
+A2_h1a_rob_prior=Oct8_only,H1a-rob,raw shift +2.0 (prior=Oct8 only),3,shift,2026-11-25T06:47:08Z
+A2_h1a_rob_Nov10_path_scored_+1,H1a-rob,raw shift +2.0 (Nov10 path scored +1 (base case 25bp)),3,shift,2026-11-25T06:47:08Z
+A2_h1a_rob_both_of_the_above,H1a-rob,raw shift +1.0 (both of the above),3,shift,2026-11-25T06:47:08Z
+A3_h2_band_full96,H2,band 3.18/4.20/7.38 width 420bp vs actual 3.88,96,INCONCLUSIVE,2026-11-25T06:48:20Z
+A3_h2_band_rstarSEP,H2-sec,band 3.88/4.19/6.58 vs actual 3.88,32,INCONCLUSIVE,2026-11-25T06:48:20Z
+A3_h2_band_noninertial,H2-rob,band 3.18/5.09/7.38 vs actual 3.88,48,INCONCLUSIVE,2026-11-25T06:48:20Z
+A3_h2_kalman_b_shift,H2-tvp,b_t 2026Q3 0.66 (sd 0.10) vs 2025Q4 0.84 vs 1990-2019 mean 0.40,147,descriptive,2026-11-25T06:48:21Z
+B_h1c_redline_net,H1c,"net +2 (hawk +7, dove -5) over 15 changes",15,more hawkish than Sep,2026-11-25T06:49:41Z
+B_h1c_redline_ex_cosmetic,H1c-rob,net excl. likely-cosmetic +2,13,more hawkish than Sep,2026-11-25T06:49:41Z
+B_h1c_redline_dissent_as_1,H1c-rob,net with dissents scored +1 instead of +2: +1,15,flat,2026-11-25T06:49:41Z
+B_h1c_keyword_tone,H1c-rob,"keyword net tone Sep +0.62 (13h/3d, 1603w) -> Oct +0.17 (17h/12d, 1643w); diff -0.45",2,net dovish vs Sep,2026-11-25T06:49:41Z
+C_h3_full_o12,H3,"Sharp low AND bounce (O1&O2, primary): 5/13 vs base 0.45",13,"post mean 0.40, P>base 0.34 -> KILLED",2026-11-25T06:51:24Z
+C_h3_full_o1,H3,Low within 20 sessions (O1): 6/13 vs base 0.49,13,"post mean 0.47, P>base 0.41 -> KILLED",2026-11-25T06:51:24Z
+C_h3_full_o2,H3,63-session return > 0 (O2): 8/13 vs base 0.61,13,"post mean 0.60, P>base 0.48 -> KILLED",2026-11-25T06:51:24Z
+C_h3_full_o3,H3,Reversal within 92d: 5/13,13,descriptive,2026-11-25T06:51:24Z
+C_h3_full_split_rev1,H3-split,O1&O2 given reversal=1: 4/5,5,descriptive,2026-11-25T06:51:24Z
+C_h3_full_split_rev0,H3-split,O1&O2 given reversal=0: 1/8,8,descriptive,2026-11-25T06:51:24Z
+C_h3_target-only_o12,H3,"Sharp low AND bounce (O1&O2, primary): 3/5 vs base 0.44",5,"post mean 0.57, P>base 0.76 -> WEAK",2026-11-25T06:51:24Z
+C_h3_target-only_o1,H3,Low within 20 sessions (O1): 3/5 vs base 0.48,5,"post mean 0.57, P>base 0.69 -> KILLED",2026-11-25T06:51:24Z
+C_h3_target-only_o2,H3,63-session return > 0 (O2): 4/5 vs base 0.61,5,"post mean 0.71, P>base 0.74 -> KILLED",2026-11-25T06:51:24Z
+C_h3_target-only_o3,H3,Reversal within 92d: 3/5,5,descriptive,2026-11-25T06:51:24Z
+C_h3_target-only_split_rev1,H3-split,O1&O2 given reversal=1: 3/3,3,descriptive,2026-11-25T06:51:24Z
+C_h3_target-only_split_rev0,H3-split,O1&O2 given reversal=0: 0/2,2,descriptive,2026-11-25T06:51:24Z
+C_h3_full_split_diff,H3-split,P(O1&O2 | reversal) 4/5 vs no reversal 1/8,13,P(rev > norev) 0.989,2026-11-25T06:51:24Z
+C_h3_target-only_split_diff,H3-split,P(O1&O2 | reversal) 3/3 vs no reversal 0/2,5,P(rev > norev) 0.971,2026-11-25T06:51:24Z
+D_h4_credit_confirming,H4,credit_confirming,1,False,2026-11-25T06:52:27Z
+D_h4_aggregate_loose,H4,aggregate_loose,1,True,2026-11-25T06:52:27Z
+D_h4_conditions_tightening,H4,conditions_tightening,1,False,2026-11-25T06:52:27Z
+D_h4_pocket,H4,pocket,1,True,2026-11-25T06:52:27Z
+D_h4_composition_artefact,H4,composition_artefact,1,True,2026-11-25T06:52:27Z
+A4_beta_2y10y_2026,preview,"beta 0.74 (se 0.04), daily 2026-01-05 to 2026-11-23",223,R2 0.68,2026-11-25T06:53:15Z
+A4_data_surprise_map,preview,not run: no consensus forecasts and no reachable release calendar (BLS/ALFRED blocked),0,INCONCLUSIVE,2026-11-25T06:53:15Z

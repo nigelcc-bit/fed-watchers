@@ -1,0 +1,22 @@
+{
+ "lo":3.1784254146,
+ "med":4.2011147518,
+ "hi":7.3785359369,
+ "width_bp":420.0110522318,
+ "actual":3.88,
+ "verdict":"INCONCLUSIVE",
+ "lo_sep":3.8784254146,
+ "med_sep":4.1895902702,
+ "hi_sep":6.5785359369,
+ "verdict_sep":"INCONCLUSIVE",
+ "b_now":0.6564699457,
+ "b_2025q4":0.8428714785,
+ "b_hist":0.3980627753,
+ "oct_core_cpi_mm":0.2962560786,
+ "core_pce":3.121159603,
+ "core_cpi":2.565840844,
+ "trimmed_pce":2.26,
+ "median_cpi":2.799156584,
+ "output_gap_cbo":1.6967965325,
+ "okun_unemp_gap":0.5768508292
+}
