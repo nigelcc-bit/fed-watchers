@@ -1,0 +1,21 @@
+﻿# secrets - NEVER commit these
+.env
+*.key
+*_secret*
+credentials*
+
+# python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# R
+.Rproj.user/
+.Rhistory
+.RData
+
+# OS junk
+.DS_Store
+Thumbs.db
