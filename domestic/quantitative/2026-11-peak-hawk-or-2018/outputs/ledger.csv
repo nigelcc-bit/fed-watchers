@@ -11,3 +11,7 @@ A3_h2_band_full96,H2,band 3.18/4.20/7.38 width 420bp vs actual 3.88,96,INCONCLUS
 A3_h2_band_rstarSEP,H2-sec,band 3.88/4.19/6.58 vs actual 3.88,32,INCONCLUSIVE,2026-11-25T06:48:20Z
 A3_h2_band_noninertial,H2-rob,band 3.18/5.09/7.38 vs actual 3.88,48,INCONCLUSIVE,2026-11-25T06:48:20Z
 A3_h2_kalman_b_shift,H2-tvp,b_t 2026Q3 0.66 (sd 0.10) vs 2025Q4 0.84 vs 1990-2019 mean 0.40,147,descriptive,2026-11-25T06:48:21Z
+B_h1c_redline_net,H1c,"net +2 (hawk +7, dove -5) over 15 changes",15,more hawkish than Sep,2026-11-25T06:49:41Z
+B_h1c_redline_ex_cosmetic,H1c-rob,net excl. likely-cosmetic +2,13,more hawkish than Sep,2026-11-25T06:49:41Z
+B_h1c_redline_dissent_as_1,H1c-rob,net with dissents scored +1 instead of +2: +1,15,flat,2026-11-25T06:49:41Z
+B_h1c_keyword_tone,H1c-rob,"keyword net tone Sep +0.62 (13h/3d, 1603w) -> Oct +0.17 (17h/12d, 1643w); diff -0.45",2,net dovish vs Sep,2026-11-25T06:49:41Z
