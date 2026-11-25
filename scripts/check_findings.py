@@ -3,7 +3,9 @@
 
 Exit 1 on any error:
   - a section header, Status line or yaml block is malformed, or a yaml block does not parse
-  - a finding is missing a field or has an invalid value (enums, dates, id format, claim length)
+  - a finding is missing a field or has an invalid value (enums, dates, id format, owner id,
+    hypothesis or finding over 30 words, key_stats not 1-3 labelled strings)
+  - a numeric token in `finding` or `key_stats` does not appear among the tokens of `numbers`
   - an id is duplicated, or a section path appears twice (re-runs must replace, not append)
   - a string in `numbers` is not found verbatim in its `source_file`
   - a links_to id does not exist
@@ -21,13 +23,18 @@ from pathlib import Path
 
 import yaml
 
-FIELDS = ["id", "study", "type", "region", "topic", "claim", "verdict", "confidence", "numbers",
-          "source_file", "run_date", "valid_until", "owner_bot", "links_to", "people"]
+FIELDS = ["id", "study", "type", "region", "topic", "hypothesis", "verdict", "finding", "key_stats", "confidence",
+          "numbers", "source_file", "run_date", "valid_until", "owner", "links_to", "people"]
 TYPES = {"quant", "qual"}
 VERDICTS = {"supported", "killed", "weak", "prior-only", "inconclusive", "interim"}
 STATUSES = {"complete", "interim"}
-OWNER = "vera"
-MAX_CLAIM_WORDS = 30
+OWNER_RE = re.compile(r"^(?:fx|cx)-\d{3}$")  # bot ids only, never names
+MAX_WORDS = 30
+MAX_KEY_STATS = 3
+# A numeric token: digits with optional thousands commas, decimals and a unit suffix (%, bp, pp).
+# Signs and trailing punctuation are not part of the token, so "+139bp" and "139bp" match.
+NUM_RE = re.compile(r"\d+(?:,\d{3})*(?:\.\d+)?(?:%|bp|pp)?")
+WORD_RE = re.compile(r"[A-Za-z]{2,}")
 RESEARCH_ROOTS = ("domestic", "international")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 ID_RE = re.compile(r"^fw-[a-z0-9]+(?:-[a-z0-9]+)*$")
@@ -160,15 +167,23 @@ def check(root, today=None):
                 errors.append(f"{fwhere}: type must be one of {sorted(TYPES)}")
             if f["verdict"] not in VERDICTS:
                 errors.append(f"{fwhere}: verdict must be one of {sorted(VERDICTS)}")
-            for k in ("region", "topic", "claim"):
+            for k in ("region", "topic", "hypothesis", "finding"):
                 if not isinstance(f[k], str) or not f[k].strip():
                     errors.append(f"{fwhere}: {k} must be a non-empty string")
-            if isinstance(f["claim"], str) and len(f["claim"].split()) > MAX_CLAIM_WORDS:
-                errors.append(f"{fwhere}: claim has {len(f['claim'].split())} words (max {MAX_CLAIM_WORDS})")
+            for k in ("hypothesis", "finding"):
+                if isinstance(f[k], str) and len(f[k].split()) > MAX_WORDS:
+                    errors.append(f"{fwhere}: {k} has {len(f[k].split())} words (max {MAX_WORDS})")
+            ks = f["key_stats"]
+            if not isinstance(ks, list) or not all(isinstance(x, str) and x.strip() for x in ks) or not 1 <= len(ks) <= MAX_KEY_STATS:
+                errors.append(f"{fwhere}: key_stats must be a list of 1-{MAX_KEY_STATS} non-empty strings")
+                ks = [x for x in ks if isinstance(x, str)] if isinstance(ks, list) else []
+            for x in ks:
+                if len(WORD_RE.findall(x)) < 2:
+                    errors.append(f"{fwhere}: key_stat '{x}' needs a plain-English label, not a bare number")
             if f["confidence"] is not None and not (isinstance(f["confidence"], str) and CONF_RE.match(f["confidence"])):
                 errors.append(f"{fwhere}: confidence must be a quoted string like \"55%\" or null")
-            if f["owner_bot"] != OWNER:
-                errors.append(f"{fwhere}: owner_bot must be '{OWNER}'")
+            if not isinstance(f["owner"], str) or not OWNER_RE.match(f["owner"]):
+                errors.append(f"{fwhere}: owner must be a bot id like fx-115 or cx-001, never a name (got {f['owner']!r})")
             rd = _date(f["run_date"])
             if not rd:
                 errors.append(f"{fwhere}: run_date must be YYYY-MM-DD")
@@ -188,6 +203,12 @@ def check(root, today=None):
             if not isinstance(nums, list) or not all(isinstance(x, str) for x in nums):
                 errors.append(f"{fwhere}: numbers must be a list of quoted strings")
                 nums = []
+            num_tokens = {t for n in nums for t in NUM_RE.findall(n)}
+            spoken = ([f["finding"]] if isinstance(f["finding"], str) else []) + ks
+            for text_ in spoken:
+                for t in NUM_RE.findall(text_):
+                    if t not in num_tokens:
+                        errors.append(f"{fwhere}: '{t}' in \"{text_}\" does not appear in numbers")
             sf = f["source_file"]
             if not isinstance(sf, str) or not (root / sf).is_file():
                 errors.append(f"{fwhere}: source_file '{sf}' does not exist")
