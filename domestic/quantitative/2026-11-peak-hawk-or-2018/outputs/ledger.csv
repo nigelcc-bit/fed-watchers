@@ -1,0 +1,13 @@
+test_id,hypothesis,statistic,n,p_or_posterior,timestamp
+A1_h1b_cum_jan_ge50,H1b,cum priced through Jan27 = 40.9bp vs 50bp floated,1,not met,2026-11-25T06:46:27Z
+A1_h1b_cum_jan_ge45,H1b-sens,cum priced through Jan27 = 40.9bp vs 45bp,1,not met,2026-11-25T06:46:27Z
+A1_gap_vs_dots_2026,fed-priced,end-2026 implied minus SEP median = +0.1bp,1,n/a,2026-11-25T06:46:27Z
+A1_gap_vs_dots_2027,fed-priced,end-2027 implied minus SEP median = +33.5bp,1,n/a,2026-11-25T06:46:27Z
+A2_h1a_waller_shift,H1a,raw shift +3.0 (now 6 vs prior 3.0); weighted +1.50,3,shift,2026-11-25T06:47:08Z
+A2_h1a_rob_prior=Oct8_only,H1a-rob,raw shift +2.0 (prior=Oct8 only),3,shift,2026-11-25T06:47:08Z
+A2_h1a_rob_Nov10_path_scored_+1,H1a-rob,raw shift +2.0 (Nov10 path scored +1 (base case 25bp)),3,shift,2026-11-25T06:47:08Z
+A2_h1a_rob_both_of_the_above,H1a-rob,raw shift +1.0 (both of the above),3,shift,2026-11-25T06:47:08Z
+A3_h2_band_full96,H2,band 3.18/4.20/7.38 width 420bp vs actual 3.88,96,INCONCLUSIVE,2026-11-25T06:48:20Z
+A3_h2_band_rstarSEP,H2-sec,band 3.88/4.19/6.58 vs actual 3.88,32,INCONCLUSIVE,2026-11-25T06:48:20Z
+A3_h2_band_noninertial,H2-rob,band 3.18/5.09/7.38 vs actual 3.88,48,INCONCLUSIVE,2026-11-25T06:48:20Z
+A3_h2_kalman_b_shift,H2-tvp,b_t 2026Q3 0.66 (sd 0.10) vs 2025Q4 0.84 vs 1990-2019 mean 0.40,147,descriptive,2026-11-25T06:48:21Z
