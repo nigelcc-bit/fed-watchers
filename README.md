@@ -6,7 +6,6 @@ quantitative studies, economic data, and international economics.
 ## Structure
 - domestic/        US / Federal Reserve research (qualitative/, quantitative/)
 - international/    non-US economies (qualitative/, quantitative/)
-- quick-lookups/   small one-question studies with a verdict card (see quick-lookups/README.md)
 - data/            raw/ and processed/ + DATA_DICTIONARY.md
 - lib/             shared code (data pulls, event-study harness)
 - docs/            methodology and conventions
@@ -34,6 +33,7 @@ quantitative studies, economic data, and international economics.
 - **Numbers.** Each string in `numbers` must appear verbatim in `source_file`; do not round, convert or recompute. Every numeric token in `finding` and `key_stats` (digits with any decimals and a %, bp or pp unit) must also appear as a token in `numbers`. A leading +/- sign is ignored, so "139bp" matches "+139bp". Matching is by whole token, so "9" does not match "40.9bp".
 - **Staleness.** Set `valid_until` for anything market-priced or time-sensitive (e.g. the next pricing re-run date). Otherwise use null.
 - **Links and people.** Qualitative findings point via `links_to` to the quantitative finding that tested them, and vice versa. `people` lists only public officials named for on-record statements. Commentators and private individuals are never named; hypotheses and findings describe them as "one camp".
+- **Moved studies.** When a study moves to another repo, its section keeps its heading and its body becomes the single line `Moved to <https://github.com/... URL>`. The check then skips the yaml and path checks for that section; findings for it live in the destination repo.
 
 `scripts/check_findings.py` enforces all of this and runs in CI (`.github/workflows/findings.yml`) with its tests. It fails on bad yaml, missing fields or bad values (including an owner that is not a bot ID, a hypothesis or finding over 30 words, or unlabelled key stats), duplicate ids or sections, numbers not found verbatim, numbers spoken in `finding` or `key_stats` that are missing from `numbers`, unknown links, and complete studies or notes with no section (any folder under `domestic/` or `international/` with a `RESULT.md`, or any non-template `.md` under `*/qualitative/`). It only warns when `valid_until` has passed. Run it locally with:
 

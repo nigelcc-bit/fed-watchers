@@ -20,5 +20,3 @@ venv/
 .DS_Store
 Thumbs.db
 
-# quick-lookups: raw data packs stay local (S-1 HTML alone is ~70 MB)
-quick-lookups/*/data/raw/

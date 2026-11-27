@@ -267,3 +267,31 @@ def test_too_many_key_stats_fails(tmp_path):
     bad = GOOD.replace('    - "about 41bp of tightening still priced"\n', '    - "about 41bp of tightening still priced"\n' + extra)
     errors, _ = run(make_repo(tmp_path, bad))
     assert any("key_stats must be a list of 1-3" in e for e in errors)
+
+
+# ---------- moved sections (study moved to another repo) ----------
+MOVED = "\n## quick-lookups/2026-11-27-gone\nMoved to https://github.com/nigelcc-bit/useless-data/tree/main/quick-lookups/2026-11-27-gone\n"
+
+
+def test_moved_section_passes(tmp_path):
+    errors, _ = run(make_repo(tmp_path, GOOD + MOVED))
+    assert errors == []
+
+
+def test_moved_section_with_extra_content_fails(tmp_path):
+    bad = GOOD + MOVED + "Status: complete | Run: 2026-11-27 | Source: x/RESULT.md\n"
+    errors, _ = run(make_repo(tmp_path, bad))
+    assert any("a moved section must contain only" in e for e in errors)
+
+
+def test_moved_pointer_must_be_github_url(tmp_path):
+    bad = GOOD + "\n## quick-lookups/2026-11-27-gone\nMoved to somewhere else\n"
+    errors, _ = run(make_repo(tmp_path, bad))
+    assert any("path does not exist" in e for e in errors)
+
+
+def test_moved_section_still_counts_for_coverage(tmp_path):
+    root = make_repo(tmp_path, GOOD.replace("## domestic/quantitative/2026-11-demo\n",
+                                            "## domestic/quantitative/2026-11-demo-old\n", 1) + MOVED)
+    errors, _ = run(root)
+    assert any("no FINDINGS.md section for 'domestic/quantitative/2026-11-demo'" in e for e in errors)

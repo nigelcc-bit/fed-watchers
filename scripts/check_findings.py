@@ -13,6 +13,9 @@ Exit 1 on any error:
     containing a RESULT.md, or any non-template .md under */qualitative/
 Warn (exit 0) when valid_until is in the past.
 
+A section whose whole body is one line "Moved to https://github.com/<owner>/<repo>/..." marks a study that
+moved to another repo: it is accepted without a yaml block or a local path, and still counts for coverage.
+
 Usage: python3 scripts/check_findings.py [--root PATH] [--today YYYY-MM-DD]
 """
 import argparse
@@ -40,6 +43,8 @@ DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 ID_RE = re.compile(r"^fw-[a-z0-9]+(?:-[a-z0-9]+)*$")
 CONF_RE = re.compile(r"^\d{1,3}%$")
 STATUS_RE = re.compile(r"^Status: (\S+) \| Run: (\S+) \| Source: (\S+)\s*$")
+# A study moved to another repo: the section body is exactly one line pointing at its new home.
+MOVED_RE = re.compile(r"^Moved to https://github\.com/[\w.-]+/[\w.-]+/\S+$")
 BLOCK_RE = re.compile(r"```yaml\n(.*?)```", re.S)
 
 
@@ -111,6 +116,11 @@ def check(root, today=None):
         if path in seen_sections:
             errors.append(f"{where}: duplicate section; a re-run must replace its section, not add another")
         seen_sections.add(path)
+        lines = [l.strip() for l in body.splitlines() if l.strip()]
+        if any(MOVED_RE.match(l) for l in lines):
+            if len(lines) != 1:
+                errors.append(f"{where}: a moved section must contain only the 'Moved to <GitHub URL>' line")
+            continue  # findings live in the destination repo; no yaml or path checks here
         if not (root / path).exists():
             errors.append(f"{where}: path does not exist")
         first = next((l for l in body.splitlines() if l.strip()), "")
