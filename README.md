@@ -6,6 +6,7 @@ quantitative studies, economic data, and international economics.
 ## Structure
 - domestic/        US / Federal Reserve research (qualitative/, quantitative/)
 - international/    non-US economies (qualitative/, quantitative/)
+- quick-lookups/   small one-question studies with a verdict card (see quick-lookups/README.md)
 - data/            raw/ and processed/ + DATA_DICTIONARY.md
 - lib/             shared code (data pulls, event-study harness)
 - docs/            methodology and conventions
